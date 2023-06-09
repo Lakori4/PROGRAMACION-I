@@ -19,9 +19,10 @@ int main () {
     do
     {
         int r, h;
-        
+        do {
         cout << "\n\n\tIntroduce el radio del cilindro: ";
         cin >> r;
+        } while (r <= 0);
 
         cout << "\n\tIntroduce la altura del cilindro: ";
         cin >> h;
