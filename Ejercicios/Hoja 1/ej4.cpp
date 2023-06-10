@@ -41,8 +41,8 @@ int main () {
 
     else {
 
-        int x = (R2.n - R1.n) / (R1.m - R2.m);
-        int y = (R1.m * x ) + R2.n;
+        float x = (R2.n - R1.n) / (R1.m - R2.m);
+        float y = (R1.m * x ) + R1.n;
 
         cout << "\n\n\tLas rectas son secantes en el punto (" << x << ", " << y << ").";
     }
