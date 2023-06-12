@@ -31,6 +31,8 @@ vector <double> setVector() {
 
 double getMayor (vector <double> &V) {
 
+    if (V.empty()) return 0;
+
     double n = V[0];
 
     for (int i = 1; i < V.size(); i++) {
