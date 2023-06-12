@@ -3,5 +3,5 @@
 *.ilk
 *.obj
 *.pdb
-.vscode*
+.vscode/
 
