@@ -8,7 +8,7 @@ using namespace std;
 
 struct Recta
 {
-    int m, n;
+    float m, n;
 };
 
 
