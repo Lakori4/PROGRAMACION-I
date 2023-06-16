@@ -2,8 +2,11 @@
 
 
 #include <iostream>
+#include <memory>
 #include <string>
 #include <vector>
+#include <array>
+#include <set>
 
 
 using namespace std;
@@ -71,7 +74,7 @@ int main () {
             else{
 
                 for (int i = 0; i < vPersonasPtr.size(); i++) {
-                    cout << "\n\t" << i+1 << ". " << vPersonasPtr[i].get()->nom << " " << vPersonasPtr[i].get()->apellido << " "; mostrarFecha(vPersonasPtr[i].get()->fNac);
+                    cout << "\n\t" << vPersonasPtr[i].get()->nom << " " << vPersonasPtr[i].get()->apellido << "\t\t"; mostrarFecha(vPersonasPtr[i].get()->fNac);
                 }
             }
             break;
@@ -91,7 +94,7 @@ int main () {
                 cin.ignore();
                 getline(cin, a);
 
-                if (!findPers(n, a, vPersonasPtr)) cout << "La persona " << n << " " << a << " no existe en la lista.";;
+                if (!findPers(n, a, vPersonasPtr)) cout << "\n\n\tLa persona " << n << " " << a << " no existe en la lista.";;
                 
             }
             break;
@@ -113,14 +116,14 @@ int main () {
                     if (vPersonasPtr[i].get()->fNac.mes == m) vPers.push_back(*vPersonasPtr[i]);
                 }
 
-                if (vPers.empty()) cout << "No hay personas que hayan nacido en el mes: " << m;
+                if (vPers.empty()) cout << "\n\n\tNo hay personas que hayan nacido en el mes: " << m;
                 else{
 
-                    cout << "Las personas nacidas en el mes " << m << " son: ";
+                    cout << "\n\n\tLas personas nacidas en el mes " << m << " son:\n";
 
                     for (int i = 0; i < vPers.size(); i++) {
 
-                        cout << vPers[i].nom << " " << vPers[i].apellido << " - "; mostrarFecha(vPers[i].fNac);
+                        cout << "\n\t" << vPers[i].nom << " " << vPers[i].apellido << " - "; mostrarFecha(vPers[i].fNac);
                     }
                 }
                 
@@ -133,14 +136,34 @@ int main () {
             if (vPersonasPtr.empty()) mosEmpty();
 
             else{
-                
+
+                array <set<persona>, 12> aPers;
+
+                for (int i = 0; i < vPersonasPtr.size(); i++) {
+
+                    aPers[vPersonasPtr[i]->fNac.mes-1].insert(*vPersonasPtr[i]);
+                }
+
+                for (int i = 0; i < aPers.size(); i++) {
+
+                    if (!aPers[i].empty()) {
+
+                        cout << "\n\n\tPersonas nacidas en el mes " << i+1 << ":\n\t\t";
+
+                        for (persona p: aPers[i]) {
+
+                            cout << p.nom << " " << p.apellido << endl;
+
+                        }
+                    }
+                }
             }
             break;
         
 
         case 0:
             cout << "\n\n\tGracias y hasta pronto\n\n";
-            system("pause");
+            //system("pause");
             return 0;
             break;
         
