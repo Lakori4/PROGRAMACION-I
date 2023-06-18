@@ -137,22 +137,26 @@ int main () {
 
             else{
 
-                array <set<persona>, 12> aPers;
+                array <set<string>, 12> aPers;
+                set<string> sPers;
 
                 for (int i = 0; i < vPersonasPtr.size(); i++) {
 
-                    aPers[vPersonasPtr[i]->fNac.mes-1].insert(*vPersonasPtr[i]);
+                    string s = vPersonasPtr[i].get()->nom + " " + vPersonasPtr[i].get()->apellido;
+
+                    aPers[vPersonasPtr[i]->fNac.mes-1].insert(s);
+
                 }
 
                 for (int i = 0; i < aPers.size(); i++) {
 
                     if (!aPers[i].empty()) {
 
-                        cout << "\n\n\tPersonas nacidas en el mes " << i+1 << ":\n\t\t";
+                        cout << "\n\n\tPersonas nacidas en el mes " << i+1 << ":\n\n\t\t";
 
-                        for (persona p: aPers[i]) {
+                        for (string s: aPers[i]) {
 
-                            cout << p.nom << " " << p.apellido << endl;
+                            cout << s << "\n\t\t";
 
                         }
                     }
