@@ -12,7 +12,7 @@ struct datosCuento {
 
     string titulo;
     int numPalab;
-    int numCarac = titulo.size();
+    int numCarac;
 };
 
 struct datoMatriz
@@ -34,7 +34,9 @@ void operarMatriz();
 
 int main () {
 
-    while (true) {
+    bool cont = 1;
+
+    while (cont) {
         string s;
 
         switch (menu())
@@ -59,16 +61,13 @@ int main () {
 
         case 4:
             cout << "\n\nGracias y hasta pronto.\n";
-            return 0;
+            cont = 0;
             break;
         
         default:
             cout << "\n\n\tLa opción no es válida. Por favor, vuelva a seleccionar otra opción";
             break;
         }
-
-
-
     }
     return 0;
 }
